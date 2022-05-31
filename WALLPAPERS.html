@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wallpapers - Theme Jungle</title>
+    <style>
+
+        @font-face {
+            font-family: Raleway;
+            src: url(Raleway/Raleway-regular.ttf);
+        }
+
+        @font-face {
+            font-family: Quicksand;
+            src: url(Quicksand/Quicksand-regular.ttf);
+        }
+
+        body, html, p {
+            height: 100%;
+            margin:0;
+            background-color:black;
+            font-family: Quicksand;
+        }
+        #logo {
+            padding-top:10px;
+            padding-left:10px;
+            padding-bottom:-10px;
+            padding-right:-5px;
+        }
+
+        #title {
+            letter-spacing:2px;
+            font-weight:bold;
+        }
+
+        .navbar{
+            z-index:1;
+            top:0;
+            display:block;
+            position:fixed;
+            background-color: #ffffff;
+            width:100%;
+        }
+
+        .navbar ul.topnav {
+            top:0;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: inherit;
+        }
+
+        .navbar ul.topnav li {float: left;}
+
+        .navbar ul.topnav li a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 18px 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 22px;
+        }
+
+        .navbar ul.topnav li a:hover:not(#title-href) {background-color: #ddd;}
+
+        .navbar ul.topnav li.icon {
+            display: none;
+            text-align:right;
+            right:0;
+        }
+
+        @media screen and (max-width:768px) {
+            .navbar ul.topnav li:not(:first-child) {display: none;}
+            .navbar ul.topnav li.icon {
+                float: right;
+                display: inline-block;
+            }
+        }
+
+        @media screen and (max-width:768px) {
+            .navbar ul.topnav.responsive {position: relative;}
+            .navbar ul.topnav.responsive li.icon {
+                position: relative;
+                right: 0;
+                top: 0;
+            }
+            .navbar ul.topnav.responsive li {
+                float: none;
+                display: inline;
+            }
+            .navbar ul.topnav.responsive li a {
+                display: block;
+                text-align: left;
+            }
+        }
+
+        .footer p{
+            margin:auto;
+            width:100%;
+            padding:40px 0 0 0;
+            background-color: #443cee;
+            height:150px;
+            max-height:200px;
+            text-align:center;
+            font-size: 22px;
+            color:#dddddd;
+        }
+
+        .footer a img:hover {
+            filter:invert(100%);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: black;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .close {
+            color: #eee;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color:#fff;
+            transition: font-size 0.5s;
+            font-size:45px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .cursor {
+            cursor: pointer
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        img {
+            margin-bottom: -4px;
+        }
+
+        .demo {
+            opacity: 0.6;
+        }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+
+        img.hover-shadow {
+            transition: 0.3s
+        }
+
+
+        .row {
+            margin:10% auto;
+            line-height: 0;
+            width:90%;
+            -webkit-column-count: 4;
+            -webkit-column-gap:   0px;
+            -moz-column-count:    4;
+            -moz-column-gap:      0px;
+            column-count:         4;
+            column-gap:           0px;
+        }
+
+        .row .column img {
+            display:block;
+            margin:0px;
+            overflow-x:hidden;
+        }
+
+        .row .column img:hover {
+            margin:0px;
+            display:block;
+            opacity:0.5;
+        }
+
+        @media screen and (max-width:768px) {
+            .row {
+                width:90%;
+                margin:15% auto;
+
+                -webkit-column-count: 2;
+                -webkit-column-gap:   0px;
+                -moz-column-count:    2;
+                -moz-column-gap:      0px;
+                column-count:         2;
+                column-gap:           0px;
+            }
+            .row .column img {margin:0;}
+        }
+
+        @media screen and (max-width:425px) {
+            .row {
+                width:90%;
+                margin:25% auto;
+
+                -webkit-column-count: 1;
+                -webkit-column-gap:   0px;
+                -moz-column-count:    1;
+                -moz-column-gap:      0px;
+                column-count:         1;
+                column-gap:           0px;
+            }
+            .row .column img {margin:0;}
+        }
+
+        .download a img{
+            position:absolute;
+            height:100px;
+            width:100px;
+            bottom: 0;
+            right: 0;
+            padding: 8px;
+        }
+
+        .download a img:hover{
+            transition: width 0.3s, height 0.3s;
+            height:120px;
+            width:120px;
+        }
+
+        @media screen and (max-width:768px) {
+            .download a img{
+                position:absolute;
+                height:75px;
+                width:75px;
+                bottom: 0;
+                right: 0;
+                padding: 5px;
+            }
+
+            .download a img:hover{
+                transition: width 0.3s, height 0.3s;
+                height:85px;
+                width:85px;
+            }
+        }
+
+        @media screen and (max-width:425px) {
+            .download a img{
+                position:absolute;
+                height:50px;
+                width:50px;
+                bottom: 0;
+                right: 0;
+                padding: 5px;
+            }
+
+            .download a img:hover{
+                transition: width 0.3s, height 0.3s;
+                height:60px;
+                width:60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <ul class="topnav" id="myTopnav">
+        <li id="logo" class="active" ><a href="index.html" style="display:inline; background-color:white"><img src="logo.PNG"/></a></li>
+        <li id="title"><a href="index.html" id="title-href">THEME JUNGLE</a></li>
+        <li><a href="WALLPAPERS.html">Wallpapers</a></li>
+        <li><a href="ABOUT%20US.html">Credits</a></li>
+        <li class="icon">
+            <a href="javascript:void(0);" style="font-size:22px;" onclick="myFunction()">☰</a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="row">
+    <div class="column">
+        <img src="Wallpapers/img1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img5.jpg" style="width:100%" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img6.jpg" style="width:100%" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img7.jpg" style="width:100%" onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img8.jpg" style="width:100%" onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img9.jpg" style="width:100%" onclick="openModal();currentSlide(9)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img10.jpg" style="width:100%" onclick="openModal();currentSlide(10)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img11.jpg" style="width:100%" onclick="openModal();currentSlide(11)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img12.jpg" style="width:100%" onclick="openModal();currentSlide(12)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img13.jpg" style="width:100%" onclick="openModal();currentSlide(13)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img14.jpg" style="width:100%" onclick="openModal();currentSlide(14)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img15.jpg" style="width:100%" onclick="openModal();currentSlide(15)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img16.jpg" style="width:100%" onclick="openModal();currentSlide(16)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img17.jpg" style="width:100%" onclick="openModal();currentSlide(17)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img18.jpg" style="width:100%" onclick="openModal();currentSlide(18)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img19.jpg" style="width:100%" onclick="openModal();currentSlide(19)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Wallpapers/img20.jpg" style="width:100%" onclick="openModal();currentSlide(20)" class="hover-shadow cursor">
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+
+        <div class="mySlides">
+            <div class="numbertext">1 / 20</div>
+            <img src="Wallpapers/img1.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img1.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">2 / 20</div>
+            <img src="Wallpapers/img2.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img2.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">3 / 20</div>
+            <img src="Wallpapers/img3.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img3.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">4 / 20</div>
+            <img src="Wallpapers/img4.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img4.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">5 / 20</div>
+            <img src="Wallpapers/img5.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img5.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">6 / 20</div>
+            <img src="Wallpapers/img6.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img6.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">7 / 20</div>
+            <img src="Wallpapers/img7.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img7.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">8 / 20</div>
+            <img src="Wallpapers/img8.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img8.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">9 / 20</div>
+            <img src="Wallpapers/img9.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img9.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">10 / 20</div>
+            <img src="Wallpapers/img10.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img10.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">11 / 20</div>
+            <img src="Wallpapers/img11.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img11.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">12 / 20</div>
+            <img src="Wallpapers/img12.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img12.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">13 / 20</div>
+            <img src="Wallpapers/img13.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img13.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">14 / 20</div>
+            <img src="Wallpapers/img14.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img14.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">15 / 20</div>
+            <img src="Wallpapers/img15.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img15.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">16 / 20</div>
+            <img src="Wallpapers/img16.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img16.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">17 / 20</div>
+            <img src="Wallpapers/img17.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img17.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">18 / 20</div>
+            <img src="Wallpapers/img18.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img18.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">19 / 20</div>
+            <img src="Wallpapers/img19.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img19.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">20 / 20</div>
+            <img src="Wallpapers/img20.jpg" style="width:100%">
+            <div class="download"><a href="Wallpapers/img20.jpg" download><img src="images/Download.png"/></a></div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <div class="caption-container">
+            <p id="caption"></p>
+        </div>
+    </div>
+</div>
+
+<div class="footer"><p>
+    <a href="###"><img src="images/Facebook12.png" height="50px" width="50px"></a>
+    <a href="###"><img src="images/twitter-icon.png" height="50px" width="50px"></a>
+    <a href="###"><img src="images/youtube.png" height="50px" width="50px"></a>
+    <a href="###"><img src="images/vimeo.png" width="50px" height="50px"></a>
+    <a href="###"><img src="images/instagramicon.png" height="50px" width="50px"></a><br/>
+    Theme Jungle, HURDCO ICT Fair 2017</p>
+</div>
+
+</body>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+<script>
+    function openModal() {
+        document.getElementById('myModal').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = "none";
+    }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        captionText.innerHTML = dots[slideIndex-1].alt;
+    }
+</script>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us - Theme Jungle</title>
+    <style>
+        html {
+            background-color:black;
+        }
+
+        @font-face {
+            font-family: Raleway;
+            src: url(Raleway/Raleway-regular.ttf);
+        }
+
+        @font-face {
+            font-family: Quicksand;
+            src: url(Quicksand/Quicksand-regular.ttf);
+        }
+
+        body, html, p {
+            height: 100%;
+            margin:0;
+            background-color:black;
+            font-family: Quicksand;
+        }
+        #logo {
+            padding-top:10px;
+            padding-left:10px;
+            padding-bottom:-10px;
+            padding-right:-5px;
+        }
+
+        #title {
+            letter-spacing:2px;
+            font-weight:bold;
+        }
+
+        .navbar{
+            top:0;
+            display:block;
+            position:fixed;
+            background-color: #ffffff;
+            width:100%;
+        }
+
+        .navbar ul.topnav {
+            top:0;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: inherit;
+        }
+
+        .navbar ul.topnav li {float: left;}
+
+        .navbar ul.topnav li a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 18px 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 22px;
+        }
+
+        .navbar ul.topnav li a:hover:not(#title-href) {background-color: #ddd;}
+
+        .navbar ul.topnav li.icon {
+            display: none;
+            text-align:right;
+            right:0;
+        }
+
+        @media screen and (max-width:768px) {
+            .navbar ul.topnav li:not(:first-child) {display: none;}
+            .navbar ul.topnav li.icon {
+                float: right;
+                display: inline-block;
+            }
+        }
+
+        @media screen and (max-width:768px) {
+            .navbar ul.topnav.responsive {position: relative;}
+            .navbar ul.topnav.responsive li.icon {
+                position: relative;
+                right: 0;
+                top: 0;
+            }
+            .navbar ul.topnav.responsive li {
+                float: none;
+                display: inline;
+            }
+            .navbar ul.topnav.responsive li a {
+                display: block;
+                text-align: left;
+            }
+        }
+
+        .footer p{
+            margin: auto;
+            width:100%;
+            padding:40px 0 0 0;
+            background-color: #443cee;
+            height:150px;
+            max-height:200px;
+            text-align:center;
+            font-size: 22px;
+            color:#dddddd;
+        }
+
+        .footer a img:hover {
+            filter:invert(100%);
+        }
+
+        .credits{
+            margin-top:120px;
+        }
+
+        .credits .credits-header {
+            text-align:center;
+            letter-spacing: 1px;
+            font-size:72px;
+            font-weight:bold;
+            color:white;
+            font-family:"Raleway","Quicksand","Segoe UI",sans-serif;
+        }
+
+        .credits ul {
+            margin-bottom:20%;
+            padding-top:5.5%;
+        }
+
+        .credits ul li {
+            margin-left:-3%;
+            text-align: center;
+            list-style-type: none;
+            font-size:24px;
+            font-family:"Quicksand";
+            background-color: black;
+            color:white;
+
+        }
+
+        @media screen and (max-width:680px) {
+            .credits ul {
+                margin-bottom:40%;
+                padding-top:5.5%;
+            }
+
+            .credits ul li {
+                margin-left:-10%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <ul class="topnav" id="myTopnav">
+        <li id="logo" class="active" ><a href="index.html" style="display:inline; background-color:white"><img src="logo.PNG"/></a></li>
+        <li id="title"><a href="index.html" id="title-href">THEME JUNGLE</a></li>
+        <li><a href="WALLPAPERS.html">Wallpapers</a></li>
+        <li><a href="ABOUT%20US.html">Credits</a></li>
+        <li class="icon">
+            <a href="javascript:void(0);" style="font-size:22px;" onclick="myFunction()">☰</a>
+        </li>
+    </ul>
+</div>
+
+<div class="credits">
+    <p class="credits-header">
+        Credits
+    </p>
+    <ul>
+        <li>This ICT Fair Project was brought to you by</li>
+        <li></br></li>
+        <li>Ramit Brata Biswas</li>
+        <li>Sadit Rahman</li>
+        <li>Zaima Masaba</li>
+        <li>Mahia Ahmed</li>
+    </ul>
+</div>
+
+<div class="footer"><p>
+    <a href="###"><img src="images/Facebook12.png" height="50px" width="50px"></a>
+    <a href="###"><img src="images/twitter-icon.png" height="50px" width="50px"></a>
+    <a href="###"><img src="images/youtube.png" height="50px" width="50px"></a>
+    <a href="###"><img src="images/vimeo.png" width="50px" height="50px"></a>
+    <a href="###"><img src="images/instagramicon.png" height="50px" width="50px"></a><br/>
+    Theme Jungle, HURDCO ICT Fair 2017</p>
+</div>
+
+</body>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+</html>
